@@ -13,6 +13,12 @@ public class Movement : MonoBehaviour
     private CharacterController cc;
     private float falling;
     bool isClimbing;
+    bool isClimbing;
+    public KeyCode leftKey = KeyCode.A;
+    public KeyCode rightKey = KeyCode.D;
+    public KeyCode upKey = KeyCode.W;
+    public KeyCode downKey = KeyCode.S;
+    public GameObject playerModel;
     
     void Awake()
     {
@@ -37,17 +43,22 @@ public class Movement : MonoBehaviour
             }
 
             // Mechanizm skakania
-            if (Input.GetKeyDown(KeyCode.Space) && cc.isGrounded)
+            if (Input.GetKeyDown(upKey) && cc.isGrounded)
             {
                 falling = jumpStrength;
             }
         }
+        if(Input.GetKey(leftKey)) {
+            playerModel.transform.rotation.y = 180;
+        } else if(Input.GetKey(rightKey)) {
+            playerModel.transform.rotation.y = 0;
+        }
         else if (isClimbing == true)
         {
-            if(Input.GetKey(KeyCode.Space))
+            if(Input.GetKey(upKey))
             {
                 falling = climbingSpeed;
-            } else if(Input.GetKey(KeyCode.S))
+            } else if(Input.GetKey(downKey))
             {
                 falling = -climbingSpeed;
             } else
