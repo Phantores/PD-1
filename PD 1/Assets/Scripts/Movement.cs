@@ -13,7 +13,6 @@ public class Movement : MonoBehaviour
     private CharacterController cc;
     private float falling;
     bool isClimbing;
-    bool isClimbing;
     public KeyCode leftKey = KeyCode.A;
     public KeyCode rightKey = KeyCode.D;
     public KeyCode upKey = KeyCode.W;
@@ -49,9 +48,9 @@ public class Movement : MonoBehaviour
             }
         }
         if(Input.GetKey(leftKey)) {
-            playerModel.transform.rotation.y = 180;
+            playerModel.transform.localEulerAngles = new Vector3(playerModel.transform.localEulerAngles.x, 180f, playerModel.transform.localEulerAngles.z);
         } else if(Input.GetKey(rightKey)) {
-            playerModel.transform.rotation.y = 0;
+            playerModel.transform.localEulerAngles = new Vector3(playerModel.transform.localEulerAngles.x, 0f, playerModel.transform.localEulerAngles.z);
         }
         else if (isClimbing == true)
         {
