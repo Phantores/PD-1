@@ -47,24 +47,27 @@ public class Movement : MonoBehaviour
                 falling = jumpStrength;
             }
         }
-        if(Input.GetKey(leftKey)) {
-            playerModel.transform.localEulerAngles = new Vector3(playerModel.transform.localEulerAngles.x, 180f, playerModel.transform.localEulerAngles.z);
-        } else if(Input.GetKey(rightKey)) {
-            playerModel.transform.localEulerAngles = new Vector3(playerModel.transform.localEulerAngles.x, 0f, playerModel.transform.localEulerAngles.z);
-        }
         else if (isClimbing == true)
         {
-            if(Input.GetKey(upKey))
+            if (Input.GetKey(upKey))
             {
                 falling = climbingSpeed;
-            } else if(Input.GetKey(downKey))
+            }
+            else if (Input.GetKey(downKey))
             {
                 falling = -climbingSpeed;
-            } else
+            }
+            else
             {
                 falling = 0;
             }
         }
+        if (Input.GetKey(leftKey)) {
+            playerModel.transform.localEulerAngles = new Vector3(playerModel.transform.localEulerAngles.x, 270f, playerModel.transform.localEulerAngles.z);
+        } else if(Input.GetKey(rightKey)) {
+            playerModel.transform.localEulerAngles = new Vector3(playerModel.transform.localEulerAngles.x, 90f, playerModel.transform.localEulerAngles.z);
+        }
+        
 
             // Zsumowanie poprzednich wartości
             Vector3 pM = new Vector3(horizontalMovement, falling, 0);
